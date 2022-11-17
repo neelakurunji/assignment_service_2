@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: assignment-service-2
+spec:
+  serviceName: assignment-service-2
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-service
+  template:
+    metadata:
+      labels:
+        app: api-service
+        selector: assignment-service-2
+    spec:
+      containers:
+      - name: assignment-service-2
+        image: nginx
+        volumeMounts:
+        - name: k8-test
+          mountPath: /etc/k8-test
+          readOnly: true
+      volumes:
+      - name: assignment-service-2-data
+        persistentVolumeClaim:
+          claimName: assignment-service-2-pvc

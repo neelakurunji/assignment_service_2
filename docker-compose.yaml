@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  assignment_service_2:
+    build: .
+    ports:
+      - "8900:8900"
+    image: "assignment_service_2:latest"
