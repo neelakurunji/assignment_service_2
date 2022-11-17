@@ -55,7 +55,7 @@ async def start_browser(
     for document in cursor: return document
 
 # Insert Audit Records
-@app.get("/fetch_data", status_code=200, description="Fetch the data available in the collection!")
+@app.get("/push_data", status_code=200, description="Inserts the audit data to the collection!")
 async def start_browser(
     username: str = Header(
         default=None,
@@ -74,7 +74,7 @@ async def start_browser(
     )
 ):
     URI = "mongodb://" + username + ":" + password + "@localhost:27017/"
-    dataset_location = "/Users/venkateshdharmapuri/Desktop/Zomato_Restaurants_Data/zomato.csv"
+    
     try:
         mc = MongoClient(URI)
         print("MongoDB connection successful")
